@@ -1,6 +1,6 @@
 # assignment2robotics 
 
-Robotics 41013: Lab Assignment 2. /n
+//Robotics 41013: Lab Assignment 2.
 Yifei Lin and Zhijian Kuang.
 this is a Rough idea of the assignment.
 We would like to make a drawing robot arm for this project. 
