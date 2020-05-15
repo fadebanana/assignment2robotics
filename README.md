@@ -1,8 +1,8 @@
 # assignment2robotics 
 
-Robotics 41013: Lab Assignment 2
-Yifei Lin and Zhijian Kuang 
-this is a Rough idea of the assignment 
+Robotics 41013: Lab Assignment 2.
+Yifei Lin and Zhijian Kuang.
+this is a Rough idea of the assignment.
 We would like to make a drawing robot arm for this project. 
 Our background is many customer would like to paint some custom sketches. 
 And this robot can draw the sketches for customer. In the program for customer. 
