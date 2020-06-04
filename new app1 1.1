@@ -21,6 +21,8 @@ classdef app1 < matlab.apps.AppBase
            F=drawfreehand(ax);
            F.Position
            disp F.Position; 
+           filename = 'testdata.xlsx';
+          writematrix(F.Position,filename,'Sheet',1,'Range','A1')
            return 
         end
     end
