@@ -1,0 +1,124 @@
+classdef app1 < matlab.apps.AppBase
+
+    % Properties that correspond to app components
+    properties (Access = public)
+        UIFigure         matlab.ui.Figure
+        drawButton       matlab.ui.control.Button
+        StopButton       matlab.ui.control.Button
+        resetButton      matlab.ui.control.Button
+        TextAreaLabel    matlab.ui.control.Label
+        TextArea         matlab.ui.control.TextArea
+        xEditFieldLabel  matlab.ui.control.Label
+        xEditField       matlab.ui.control.NumericEditField
+        yEditFieldLabel  matlab.ui.control.Label
+        yEditField       matlab.ui.control.NumericEditField
+        zEditFieldLabel  matlab.ui.control.Label
+        zEditField       matlab.ui.control.NumericEditField
+        UIAxes           matlab.ui.control.UIAxes
+    end
+
+    % Component initialization
+    methods (Access = private)
+
+        % Create UIFigure and components
+        function createComponents(app)
+
+            % Create UIFigure and hide until all components are created
+            app.UIFigure = uifigure('Visible', 'off');
+            app.UIFigure.Position = [100 100 640 480];
+            app.UIFigure.Name = 'UI Figure';
+
+            % Create drawButton
+            app.drawButton = uibutton(app.UIFigure, 'push');
+            app.drawButton.Position = [352 69 119 32];
+            app.drawButton.Text = {'draw'; ''};
+
+            % Create StopButton
+            app.StopButton = uibutton(app.UIFigure, 'push');
+            app.StopButton.Position = [487 69 119 32];
+            app.StopButton.Text = 'Stop';
+
+            % Create resetButton
+            app.resetButton = uibutton(app.UIFigure, 'push');
+            app.resetButton.Position = [523 149 83 22];
+            app.resetButton.Text = 'reset';
+
+            % Create TextAreaLabel
+            app.TextAreaLabel = uilabel(app.UIFigure);
+            app.TextAreaLabel.HorizontalAlignment = 'right';
+            app.TextAreaLabel.Position = [17 380 56 22];
+            app.TextAreaLabel.Text = 'Text Area';
+
+            % Create TextArea
+            app.TextArea = uitextarea(app.UIFigure);
+            app.TextArea.Position = [88 366 150 38];
+            app.TextArea.Value = {'setting up corodinates'};
+
+            % Create xEditFieldLabel
+            app.xEditFieldLabel = uilabel(app.UIFigure);
+            app.xEditFieldLabel.HorizontalAlignment = 'right';
+            app.xEditFieldLabel.Position = [47 331 25 22];
+            app.xEditFieldLabel.Text = 'x';
+
+            % Create xEditField
+            app.xEditField = uieditfield(app.UIFigure, 'numeric');
+            app.xEditField.Position = [87 331 100 22];
+
+            % Create yEditFieldLabel
+            app.yEditFieldLabel = uilabel(app.UIFigure);
+            app.yEditFieldLabel.HorizontalAlignment = 'right';
+            app.yEditFieldLabel.Position = [47 300 25 22];
+            app.yEditFieldLabel.Text = 'y';
+
+            % Create yEditField
+            app.yEditField = uieditfield(app.UIFigure, 'numeric');
+            app.yEditField.Position = [87 300 100 22];
+
+            % Create zEditFieldLabel
+            app.zEditFieldLabel = uilabel(app.UIFigure);
+            app.zEditFieldLabel.HorizontalAlignment = 'right';
+            app.zEditFieldLabel.Position = [47 268 25 22];
+            app.zEditFieldLabel.Text = 'z';
+
+            % Create zEditField
+            app.zEditField = uieditfield(app.UIFigure, 'numeric');
+            app.zEditField.Position = [87 268 100 22];
+
+            % Create UIAxes
+            app.UIAxes = uiaxes(app.UIFigure);
+            title(app.UIAxes, 'Drawing zone')
+            xlabel(app.UIAxes, 'X')
+            ylabel(app.UIAxes, 'Y')
+            app.UIAxes.TitleFontWeight = 'bold';
+            app.UIAxes.Position = [249 180 357 277];
+
+            % Show the figure after all components are created
+            app.UIFigure.Visible = 'on';
+        end
+    end
+
+    % App creation and deletion
+    methods (Access = public)
+
+        % Construct app
+        function app = app1
+
+            % Create UIFigure and components
+            createComponents(app)
+
+            % Register the app with App Designer
+            registerApp(app, app.UIFigure)
+
+            if nargout == 0
+                clear app
+            end
+        end
+    
+        % Code that executes before app deletion
+        function delete(app)
+
+            % Delete UIFigure when app is deleted
+            delete(app.UIFigure)
+        end
+    end
+end
